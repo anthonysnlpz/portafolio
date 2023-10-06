@@ -19,28 +19,44 @@ html {
 
 body {
   font-size: 16px;
+  /* Fondo degradado oscuro y suave */
+  background: linear-gradient(to bottom, #2C3E50, #222, #2C3E50);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* escritorio */
+/* Keyframes para la animación de escritura */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 .contenedor {
   height: 10rem;
-  min-width: 90%;
+  min-width: 100%;
   width: 100%;
-  background-color: var(--footer);
   display: flex;
   justify-content: space-between;
 }
 
 .contenedor__logo {
-  background-color: transparent;
   color: #FFF;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
-  /* border: 1rem; */
-  width: 40rem;
+  max-width: 100%;
+  margin-left: 2rem;
   height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+
+
 }
 
 .nav {
@@ -55,12 +71,104 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   color: #FFF;
+  /* Agregar posición relativa para la línea */
+  position: relative;
 }
 
+/* Estilo de la línea debajo del enlace */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: rgb(224, 156, 28);
+  /* Posiciona la línea debajo del texto */
+  bottom: -2px;
+  left: 0;
+  /* Agregar transición para suavizar el efecto */
+  transition: width 0.3s ease-in-out;
+}
+
+/* Efecto al hacer hover */
+.nav__link:hover::after {
+  /* Muestra la línea completa al hacer hover */
+  width: 100%;
+}
+
+.presentacion {
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2rem;
+  margin-left: 2rem;
+  color: #FFF;
+}
+
+.presentacion h1 {
+  width: 35ch;
+}
+
+.presentacion h1 span {
+  /* Color inicial del texto */
+  color: #FF5733;
+  /* Animación infinita de 5 segundos */
+  animation: cambioColor 5s infinite;
+}
+
+/* Estilos para el párrafo */
+.presentacion p {
+  width: 75ch;
+  margin-top: 20px;
+  line-height: 2rem;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.imagen-me {
+  color: #FFF;
+  font-size: 2rem;
+  max-width: 75ch;
+  margin-left: 2rem;
+  color: #FFF;
+}
+
+/* Estilos para la clase "me" (la imagen) */
+.me {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+}
+
+@keyframes cambioColor {
+
+  0%,
+  100% {
+    /* Primer color */
+    color: #FF5733;
+  }
+
+  25% {
+    /* Segundo color */
+    color: #3498db;
+  }
+
+  50% {
+    /* Tercer color */
+    color: #FFC300;
+  }
+
+  75% {
+    /* Cuarto color */
+    color: #27AE60;
+  }
+}
+
+/* movil 768px */
 @media (max-width: 768px) {
   .contenedor {
-    width: 100%;
-    display: flex;
+    max-width: 100%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -68,13 +176,9 @@ body {
   }
 
   .contenedor__logo {
-    background-color: transparent;
-    color: #FFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    height: 100%;
-    font-size: 3rem;
     width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    font-size: 3rem;
     margin: 0;
     border-radius: 0;
   }
@@ -85,5 +189,18 @@ body {
     justify-content: center;
     text-align: center;
     margin: 0 0 1rem;
+  }
+
+  .presentacion {
+    flex-direction: column;
+    margin: 0 2rem;
+  }
+
+  .presentacion h1 {
+    width: 100%;
+  }
+
+  .imagen-me {
+    margin: 0 2rem;
   }
 }
